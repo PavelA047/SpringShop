@@ -3,5 +3,5 @@ ALTER TABLE `shop_db`.`orderitem`
     ADD CONSTRAINT `orderItem_order_id`
         FOREIGN KEY (`order_id`)
             REFERENCES `shop_db`.`order` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION;
+            ON DELETE CASCADE
+            ON UPDATE CASCADE ;

@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `shop_db`.`category`;
+DROP TABLE IF EXISTS `shop_db`.`categories`;
 
-CREATE TABLE `shop_db`.`category`
+CREATE TABLE `shop_db`.`categories`
 (
     `id`          INT         NOT NULL AUTO_INCREMENT,
     `title`       VARCHAR(45) NOT NULL,

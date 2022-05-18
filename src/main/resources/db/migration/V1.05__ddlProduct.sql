@@ -1,22 +1,21 @@
 DROP TABLE IF EXISTS `shop_db`.`product`;
 
-CREATE TABLE `shop_db`.`product`
+CREATE TABLE `shop_db`.`products`
 (
     `id`               INT         NOT NULL AUTO_INCREMENT,
     `category_id`      INT         NOT NULL,
-    `vendorCode`       VARCHAR(45) NOT NULL,
-    `productImage`     INT NULL,
+    `vendor_code`       VARCHAR(45) NOT NULL,
     `title`            VARCHAR(45) NOT NULL,
-    `shortDescription` VARCHAR(45) NULL,
-    `fullDescription`  VARCHAR(45) NULL,
+    `short_description` VARCHAR(45) NULL,
+    `full_description`  VARCHAR(45) NULL,
     `price`            DOUBLE      NOT NULL,
-    `createAt`         DATETIME NULL,
-    `updateAt`         DATETIME NULL,
+    `create_at`         DATETIME NULL,
+    `update_at`         DATETIME NULL,
     PRIMARY KEY (`id`),
-    INDEX              `product_category_id_idx` (`category_id` ASC) VISIBLE,
-    CONSTRAINT `product_category_id`
+    INDEX              `products_category_id_idx` (`category_id` ASC) VISIBLE,
+    CONSTRAINT `products_category_id`
         FOREIGN KEY (`category_id`)
-            REFERENCES `shop_db`.`category` (`id`)
+            REFERENCES `shop_db`.`categories` (`id`)
             ON DELETE CASCADE
             ON UPDATE CASCADE
 );

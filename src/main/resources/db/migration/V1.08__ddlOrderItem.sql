@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `shop_db`.`orderItem`;
+DROP TABLE IF EXISTS `shop_db`.`orders_item`;
 
-CREATE TABLE `shop_db`.`orderItem`
+CREATE TABLE `shop_db`.`orders_item`
 (
     `id`          INT    NOT NULL AUTO_INCREMENT,
     `quantity`    INT    NOT NULL,
@@ -9,10 +9,11 @@ CREATE TABLE `shop_db`.`orderItem`
     `product_id`  INT    NOT NULL,
     `order_id`    INT    NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX         `orderItem_product_id_idx` (`product_id` ASC) VISIBLE,
-    CONSTRAINT `orderItem_product_id`
+    INDEX         `orders_item_product_id_idx` (`product_id` ASC) VISIBLE,
+    INDEX         `orders_item_orders_id_idx` (`order_id` ASC) VISIBLE,
+    CONSTRAINT `orders_item_product_id`
         FOREIGN KEY (`product_id`)
-            REFERENCES `shop_db`.`product` (`id`)
+            REFERENCES `shop_db`.`products` (`id`)
             ON DELETE CASCADE
             ON UPDATE CASCADE
 );

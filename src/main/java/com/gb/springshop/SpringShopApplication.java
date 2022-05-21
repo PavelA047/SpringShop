@@ -12,6 +12,7 @@ public class SpringShopApplication {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    //в методичке бин находится в SecurityConfig, у меня зацикливаются SecurityConfig и UserService
 
     public static void main(String[] args) {
         SpringApplication.run(SpringShopApplication.class, args);

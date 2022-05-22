@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<html lang="en">
+
+<head>
+    <title>New Product Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .error {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+
+    <div id="loginbox" style="margin-top: 50px;"
+         class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <div class="panel-title">Register New Product</div>
+            </div>
+
+            <div style="padding-top: 30px" class="panel-body">
+                <form th:action="@{/products}"
+                      th:object="${product}" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                    Enter title
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{title}" placeholder="title (*)" class="form-control"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('title')}"
+                           th:errors="*{title}"></p>
+                    </div>
+
+                    Enter Cost
+                    <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{price}" placeholder="cost (*)" class="form-control"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+                    </div>
+
+                    Choose category
+                    <div class="form-group">
+                        <select multiple class="form-control" id="categories" th:field="*{category}" required>
+                            <option th:each="cat: ${categories}"
+                                    th:text="${cat.title}"
+                                    th:value="${cat.id}"
+                                    th:selected="${cat}"></option>
+                        </select>
+                    </div>
+
+                    Enter Vendor code
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{vendorCode}" placeholder="vendor code (*)" class="form-control"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('vendorCode')}" th:errors="*{vendorCode}"></p>
+                    </div>
+
+                    Enter short description
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{shortDescription}" placeholder="short description (*)" class="form-control"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('shortDescription')}"
+                           th:errors="*{shortDescription}"></p>
+                    </div>
+
+                    Enter full description
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{fullDescription}" placeholder="full description (*)" class="form-control"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('fullDescription')}"
+                           th:errors="*{fullDescription}"></p>
+                    </div>
+
+                    Put image
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control-file">
+                    </div>
+
+                    <div style="margin-top: 10px" class="form-group">
+                        <div class="col-sm-6 controls">
+                            <button type="submit" class="btn btn-primary">Add product</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

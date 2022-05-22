@@ -31,6 +31,10 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
+    public Product getProductByTitle(String title) {
+        return productRepository.findOneByTitle(title);
+    }
+
     public Page<Product> getAllProductsByPage(int pageNumber, int pageSize) {
         return productRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
